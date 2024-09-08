@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="tel"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="radio"] {
+            margin: 10px 5px 10px 0;
+        }
+        .hidden-content {
+            display: none;
+            margin-top: 20px;
+        }
+        .submit-btns {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .register-btn {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .clear-btn {
+            background-color: #dc3545;
+            color: #fff;
+            margin-left: 10px;
+        }
+    </style>
+    <script>
+        function toggleFPOContent() {
+            const fpoContent = document.getElementById("fpo-content");
+            const yesButton = document.getElementById("fpo-yes");
+
+            if (yesButton.checked) {
+                fpoContent.style.display = "block";
+            } else {
+                fpoContent.style.display = "none";
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("seller-form").reset();
+            document.getElementById("fpo-content").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Seller Registration</h2>
+    <form id="seller-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="district">District:</label>
+        <input type="text" id="district" name="district" required>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required>
+
+        <label for="contact">Contact Me:</label>
+        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" required>
+
+        <label>Do you come under FPO/C:</label>
+        <input type="radio" id="fpo-yes" name="fpo" value="yes" onclick="toggleFPOContent()"> YES
+        <input type="radio" id="fpo-no" name="fpo" value="no" onclick="toggleFPOContent()"> NO
+
+        <!-- Hidden content shown only when "YES" is selected -->
+        <div id="fpo-content" class="hidden-content">
+            <label for="fpo-name">Name of the FPO:</label>
+            <input type="text" id="fpo-name" name="fpo-name">
+
+            <label for="ceo-name">CEO Name:</label>
+            <input type="text" id="ceo-name" name="ceo-name">
+
+            <label for="reg-no">Type of FPO Reg.no:</label>
+            <input type="text" id="reg-no" name="reg-no">
+
+            <label for="fpo-type">Type of FPO:</label>
+            <input type="text" id="fpo-type" name="fpo-type">
+        </div>
+
+        <label>
+            <input type="radio" name="agree" required> I agree to sell the field through the Kalki Agri platform
+        </label>
+
+        <div class="submit-btns">
+            <button type="submit" class="register-btn">Register</button>
+            <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+        </div>
+    </form>
+
+</body>
+</html>
